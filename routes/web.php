@@ -29,9 +29,10 @@ Route::get('/add', function () {
 
 Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::get('register', [AuthController::class, 'regist'])->name('register');
-    // Route::post('store', [AuthController::class, 'store'])->name('store');
+    Route::post('signup', [AuthController::class, 'signup'])->name('signup');
     Route::get('login', [AuthController::class, 'login'])->name('login');
-    // Route::post('store', [AuthController::class, 'store'])->name('store');
+    Route::post('signin', [AuthController::class, 'signin'])->name('signin');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::group(['prefix' => 'article', 'as' => 'article.'], function () {

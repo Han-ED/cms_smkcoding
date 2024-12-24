@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('container')
+
     <div class="container" style="margin-bottom: 10px; margin-top: 10px">
         <h2>New Articles</h2>
         <div class="card">

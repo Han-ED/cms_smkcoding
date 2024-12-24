@@ -5,7 +5,7 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow-lg p-4" style="width: 25rem;">
             <h4 class="text-center mb-4">Register</h4>
-            <form action="" method="POST">
+            <form action="{{route ('auth.signup')}}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
