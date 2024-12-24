@@ -4,6 +4,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\ArticleController;
 use App\HTTP\Controllers\CategoryController;
+use App\HTTP\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,13 @@ Route::get('/', function () {
 
 Route::get('/add', function () {
     return view('add');
+});
+
+Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
+    Route::get('register', [AuthController::class, 'regist'])->name('register');
+    // Route::post('store', [AuthController::class, 'store'])->name('store');
+    Route::get('login', [AuthController::class, 'login'])->name('login');
+    // Route::post('store', [AuthController::class, 'store'])->name('store');
 });
 
 Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
