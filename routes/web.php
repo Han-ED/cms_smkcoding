@@ -35,12 +35,12 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
+Route::group(['prefix' => 'article', 'as' => 'article.', 'middleware' => ['checkadmin'] ], function () {
     Route::get('create', [ArticleController::class, 'create'])->name('create');
     Route::post('store', [ArticleController::class, 'store'])->name('store');
 });
 
-Route::group(['prefix' => 'kategori', 'as' => 'kategori.'], function () {
+Route::group(['prefix' => 'kategori', 'as' => 'kategori.', 'middleware' => ['checkadmin']], function () {
     Route::get('create', [CategoryController::class, 'create'])->name('create');
     Route::post('store', [CategoryController::class, 'store'])->name('store');
 });
