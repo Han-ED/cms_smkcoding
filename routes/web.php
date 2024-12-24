@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\ArticleController;
 use App\HTTP\Controllers\CategoryController;
 use App\HTTP\Controllers\AuthController;
+use App\HTTP\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,15 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
 Route::group(['prefix' => 'article', 'as' => 'article.', 'middleware' => ['checkadmin'] ], function () {
     Route::get('create', [ArticleController::class, 'create'])->name('create');
     Route::post('store', [ArticleController::class, 'store'])->name('store');
+    Route::get('manage', [ArticleController::class, 'manage'])->name('manage');
+    Route::delete('delete/{post}', [ArticleController::class, 'delete'])->name('delete');
+    Route::post('edit/{post}', [ArticleController::class, 'edit'])->name('edit');
+    Route::post('update/{post}', [ArticleController::class, 'update'])->name('update');
 });
 
 Route::group(['prefix' => 'kategori', 'as' => 'kategori.', 'middleware' => ['checkadmin']], function () {
     Route::get('create', [CategoryController::class, 'create'])->name('create');
     Route::post('store', [CategoryController::class, 'store'])->name('store');
 });
+
+Route::get('manageUser', [UserController::class, 'ManageUser'])->name('manageUser')->middleware('checkadmin');
